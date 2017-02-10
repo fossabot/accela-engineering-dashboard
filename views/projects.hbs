@@ -6,9 +6,9 @@
       <div class="well">
         <h3>{{name}}</h3>
         <p>{{description}}</p>
-        <button class="btn btn-primary" type="button">
-          Open Pull Requests <span class="badge">{{openPullRequest}}</span>
-        </button>
+        <span class="badge alert-{{currentBuildStatusfor}}">Current Build: {{currentBuildStatus}}</span>
+        <span class="badge alert-success">Open Pull Requests: {{openPullRequest}}</span>
+        <p></p>
       </div>
     </div>
    {{/each}}

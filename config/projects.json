@@ -5,21 +5,24 @@
       "name": "PMA",
       "jenkins-endpoint": "http://boardroom-mm:8000",
       "description": "PMA is a hybrid mobile application.",
-      "openPullRequest": 3
+      "openPullRequest": 3,
+      "currentBuildStatus": "danger"
     },
     {
       "id": 2,
       "name": "ACA",
       "jenkins-endpoint": "http://boardroom-mm:8001",
       "description": "ACA is Accela's citizen facing portal",
-      "openPullRequest": 7
+      "openPullRequest": 7,
+      "currentBuildStatus": "success"
     },
     {
       "id": 3,
       "name": "AA",
       "jenkins-endpoint": "http://boardroom-mm:8002",
       "description": "AA is Accela's civic platform",
-      "openPullRequest": 12
+      "openPullRequest": 12,
+      "currentBuildStatus": "danger"
     }
   ]
 }

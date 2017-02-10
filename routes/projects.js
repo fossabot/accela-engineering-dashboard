@@ -10,6 +10,7 @@ router.get('/', function(req, res) {
   });
 
   res.render('projects', {
+    nav_active_projects: true,
     projects: viewModel
   });
 });
