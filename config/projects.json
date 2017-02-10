@@ -6,7 +6,7 @@
       "jenkins-endpoint": "http://boardroom-mm:8000",
       "description": "PMA is a hybrid mobile application.",
       "openPullRequest": 3,
-      "currentBuildStatus": "Broken"
+      "currentBuildStatus": "FAILED"
     },
     {
       "id": 2,
