@@ -10,9 +10,9 @@ var jenkins = jenkinsapi.init("http://boardroom-mm:8080", { strictSSL: false });
 var github = new GitHubApi({
   debug: true,
   protocol: "https",
-  host: "api.github.com", // should be api.github.com for GitHub
+  host: "api.github.com",
   Promise: require('bluebird'),
-  followRedirects: false, // default: true; there's currently an issue with non-get redirects, so allow ability to disable follow-redirects
+  followRedirects: false,
   timeout: 5000
 });
 
@@ -36,12 +36,10 @@ function getPmaGitHubPullRequest(callback) {
   });
 }
 
-/* GET projects listing. */
 router.get('/', function (req, res, next) {
   github.authenticate({
-      type: "basic",
-      username: 'info@christesene.com',
-      password: 'Cassy143'
+    type: "token",
+    token: "2a037ebc08fc1b0287059d3437e5625d75284e6a",
   });
 
   async.parallel([

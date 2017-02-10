@@ -3,10 +3,10 @@
     {
       "id": 1,
       "name": "PMA",
-      "jenkins-endpoint": "http://boardroom-mm:8000",
+      "jenkins-endpoint": "http://boardroom-mm:8080",
       "description": "PMA is a hybrid mobile application.",
-      "openPullRequest": 3,
-      "currentBuildStatus": "FAILED"
+      "gitHubOwner": "Accela-Inc",
+      "gitHubRepo": "hybrid-pma"
     },
     {
       "id": 2,
