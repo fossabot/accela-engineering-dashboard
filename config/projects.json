@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "PMA",
+      "jenkins-endpoint": "http://boardroom-mm:8000",
+      "description": "PMA is a hybrid mobile application."
+    },
+    {
+      "id": 2,
+      "name": "ACA",
+      "jenkins-endpoint": "http://boardroom-mm:8001",
+      "description": "ACA is Accela's citizen facing portal"
+    },
+    {
+      "id": 3,
+      "name": "AA",
+      "jenkins-endpoint": "http://boardroom-mm:8002",
+      "description": "AA is Accela's civic platform"
+    }
+  ]
+}
