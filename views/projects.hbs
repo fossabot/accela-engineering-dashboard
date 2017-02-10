@@ -6,9 +6,8 @@
       <div class="well">
         <h3>{{name}}</h3>
         <p>{{description}}</p>
-        <span class="badge alert-{{currentBuildStatusCssClass}}">Current Build: {{currentBuildStatus}}</span>
-        <span class="badge alert-{{currentPullRequestCssClass}}">Open Pull Requests: {{openPullRequest}}</span>
-        <p></p>
+        <span class="badge alert-{{currentBuildStatusCssClass}}">Current Build: {{jenkinsLatestBuildStatus}}</span>
+        <span class="badge alert-{{currentPullRequestCssClass}}">Open Pull Requests: {{gitHubPullRequestsCount}}</span>
       </div>
     </div>
    {{/each}}

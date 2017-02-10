@@ -3,24 +3,31 @@
     {
       "id": 1,
       "name": "PMA",
-      "jenkins-endpoint": "http://boardroom-mm:8080",
       "description": "PMA is a hybrid mobile application.",
+      "jenkinsEndpoint": "http://boardroom-mm:8080",
+      "jenkinsJobName": "hybrid-pma",
       "gitHubOwner": "Accela-Inc",
       "gitHubRepo": "hybrid-pma"
     },
     {
       "id": 2,
       "name": "ACA",
-      "jenkins-endpoint": "http://boardroom-mm:8001",
       "description": "ACA is Accela's citizen facing portal",
+      "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
+      "jenkinsJobName": "ACA_9.1.0_daily_build_deploy",
+      "gitHubOwner": "Accela-Inc",
+      "gitHubRepo": "ACA_Prod",
       "openPullRequest": 7,
       "currentBuildStatus": "Passing"
     },
     {
       "id": 3,
       "name": "AA",
-      "jenkins-endpoint": "http://boardroom-mm:8002",
       "description": "AA is Accela's civic platform",
+      "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
+      "jenkinsJobName": "AA_9.1.0_daily_build_deploy",
+      "gitHubOwner": "Accela-Inc",
+      "gitHubRepo": "AA_Prod",
       "openPullRequest": 12,
       "currentBuildStatus": "Passing"
     }

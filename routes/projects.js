@@ -1,61 +1,51 @@
 var express = require('express');
-var router = express.Router();
-var projects = require('../config/projects.json');
-var jenkinsapi = require('jenkins-api');
 var async = require('async');
-var GitHubApi = require("github");
+var projects = require('../config/projects.json');
+var github = require('../services/github-service');
+var jenkins = require('../services/jenkins-service');
+var router = express.Router();
+var _ = require('lodash');
 
-var jenkins = jenkinsapi.init("http://boardroom-mm:8080", { strictSSL: false });
-
-var github = new GitHubApi({
-  debug: true,
-  protocol: "https",
-  host: "api.github.com",
-  Promise: require('bluebird'),
-  followRedirects: false,
-  timeout: 5000
-});
-
-function getPmaLatestBuildInfo(callback) {
-  jenkins.last_build_info('hybrid-pma', function (err, data) {
-    if (err) {
-      callback(err);
-    }
-
-    callback(null, data);
+function updateGitHubData(callback) {
+  let tasks = projects.projects.map(function (project) {
+    return github.getProjectGitHubPullRequestInfo.bind(github, project);
   });
-};
 
-function getPmaGitHubPullRequest(callback) {
-  github.pullRequests.getAll({ state: "open", repo: "hybrid-pma", owner: "Accela-Inc" }, function (err, data) {
-    if (err) {
-      callback(err);
+  async.parallel(tasks, function (err, data) {
+    for (i = 0; i < projects.projects.length; i++) {
+      projects.projects[i].gitHubPullRequestsCount = _.get(data[i], "length");
     }
 
-    callback(null, data);
+    return callback(null, data);
   });
 }
 
-router.get('/', function (req, res, next) {
-  github.authenticate({
-    type: "token",
-    token: "2a037ebc08fc1b0287059d3437e5625d75284e6a",
+function updateJenkinsData(callback) {
+  let tasks = projects.projects.map(function (project) {
+    return jenkins.getJenkinsLatestBuildInfo.bind(jenkins, project);
   });
 
-  async.parallel([
-    getPmaLatestBuildInfo,
-    getPmaGitHubPullRequest
-  ], function (err, data) {
-    if (err) {
-      return next(err);
+  async.parallel(tasks, function (err, data) {
+    for (i = 0; i < projects.projects.length; i++) {
+      projects.projects[i].jenkinsLatestBuildStatus = _.get(data[i], "result");
     }
 
-    projects.projects[0].currentBuildStatus = data[0].result;
-    projects.projects[0].openPullRequest = data[1].length;
+    return callback(null, data);
+  });
+}
+
+router.get('/', function (req, res) {
+  async.parallel([
+    updateGitHubData,
+    updateJenkinsData
+  ], function (err, data) {
+    if (err) {
+      return res.render('error');
+    }
 
     let viewModel = projects.projects.map((project) => {
-      project.currentBuildStatusCssClass = project.currentBuildStatus === "FAILURE" ? "danger" : "success";
-      project.currentPullRequestCssClass = project.openPullRequest > 5 ? "warning" : "success";
+      project.currentBuildStatusCssClass = project.jenkinsLatestBuildStatus === "FAILURE" ? "danger" : "success";
+      project.currentPullRequestCssClass = project.gitHubPullRequestsCount > 5 ? "warning" : "success";
       return project;
     });
 
