@@ -1,4 +1,5 @@
 var GitHubApi = require("github");
+var config = require("../config/app.json");
 
 var github = new GitHubApi({
   debug: false,
@@ -11,13 +12,13 @@ var github = new GitHubApi({
 
 github.authenticate({
   type: "token",
-  token: "2a037ebc08fc1b0287059d3437e5625d75284e6a",
+  token: config.gitHubTokenPre + config.gitHubTokenPost,
 });
 
 function getProjectGitHubPullRequestInfo(project, callback) {
   github.pullRequests.getAll({ state: "open", repo: project.gitHubRepo, owner: project.gitHubOwner }, function (err, data) {
     if (err) {
-      callback(err);
+      return callback(err);
     }
 
     callback(null, data);

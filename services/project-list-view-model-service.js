@@ -6,12 +6,18 @@ var _ = require('lodash');
 
 
 function generate(projects, generateCallback) {
+  let errors = [];
+
   function updateGitHubData(updateGitHubDataCallback) {
     let tasks = projects.map(function (project) {
       return github.getProjectGitHubPullRequestInfo.bind(github, project);
     });
 
     async.parallel(tasks, function (err, data) {
+      if (err) {
+        errors.push(err);
+      }
+
       for (i = 0; i < projects.length; i++) {
         projects[i].gitHubPullRequestsCount = _.get(data[i], "length");
       }
@@ -26,6 +32,10 @@ function generate(projects, generateCallback) {
     });
 
     async.parallel(tasks, function (err, data) {
+      if (err) {
+        errors.push(err);
+      }
+
       for (i = 0; i < projects.length; i++) {
         projects[i].jenkinsLatestBuildStatus = _.get(data[i], "result");
       }
@@ -42,13 +52,16 @@ function generate(projects, generateCallback) {
       return generateCallback(err);
     }
 
-    let viewModel = projects.map((project) => {
+    let projectsWithInfo = projects.map((project) => {
       project.currentBuildStatusCssClass = project.jenkinsLatestBuildStatus === "FAILURE" ? "danger" : "success";
       project.currentPullRequestCssClass = project.gitHubPullRequestsCount > 5 ? "warning" : "success";
       return project;
     });
 
-    generateCallback(null, viewModel);
+    generateCallback(null, {
+      projects: projectsWithInfo,
+      errors: errors
+    });
   });
 }
 
