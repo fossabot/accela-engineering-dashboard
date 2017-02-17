@@ -15,17 +15,9 @@ github.authenticate({
   token: config.gitHubTokenPre + config.gitHubTokenPost,
 });
 
-function getProjectGitHubPullRequestInfo(project, callback) {
-  github.pullRequests.getAll({ state: "open", repo: project.gitHubRepo, owner: project.gitHubOwner }, function (err, data) {
-    if (err) {
-      return callback(err);
-    }
-
-    callback(null, data);
-  });
+function getProjectGitHubPullRequestInfo(gitHubRepo, gitHubOwner, callback) {
+  github.pullRequests.getAll({ state: "open", repo: gitHubRepo, owner: gitHubOwner }, callback);
 }
-
-
 
 module.exports = {
   getProjectGitHubPullRequestInfo: getProjectGitHubPullRequestInfo

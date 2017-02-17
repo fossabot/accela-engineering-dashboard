@@ -5,7 +5,7 @@
     <div class="panel panel-default" *ngFor="let project of projects">
       <div class="panel-heading">
         <h3 class="panel-title">{{project.name}} 
-          <span class="label pull-right" [ngClass]="{'label-success': project.github?.numberOfPullRequests < 5, 'label-danger': project.github?.numberOfPullRequests > 25 }">Open Pull Requests: {{ project.github?.numberOfPullRequests }}</span>
+          <span class="label pull-right" [ngClass]="{'label-success': project.github?.numberOfPullRequests < 5, 'label-danger': project.github?.numberOfPullRequests > 5 }">Open Pull Requests: {{ project.github?.numberOfPullRequests }}</span>
         </h3>
       </div>
       <div class="panel-body">
