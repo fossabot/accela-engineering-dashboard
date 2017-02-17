@@ -110,15 +110,16 @@
       "description": "CP is Accela's civic payments v1",
       "sourceControl": {
         "type": "vsts",
+        "vstsProject": "Civic Payments",
         "vstsRepo": "Connect_Payments"
       },
       "builds": [
         {
           "id": 51,
           "type": "vsts",
-          "name": "-- PLEASE UPDATE THE NAME --",
+          "name": "master",
           "vstsBuild": "ServiceAdmin_master",
-          "vstsProject": "Civic Payments"          
+          "vstsProject": "Civic Payments"
         }
       ]
     },
@@ -130,14 +131,29 @@
       "gitHubRepo": "OB",
       "sourceControl": {
         "type": "vsts",
+        "vstsProject": "Online-bills",
         "vstsRepo": "Online-bills"
       },
       "builds": [
         {
           "id": 61,
           "type": "vsts",
-          "name": "-- PLEASE UPDATE THE NAME --",
+          "name": "master",
           "vstsBuild": "master",
+          "vstsProject": "Online-bills"
+        },
+        {
+          "id": 62,
+          "type": "vsts",
+          "name": "develop",
+          "vstsBuild": "develop",
+          "vstsProject": "Online-bills"
+        },
+        {
+          "id": 63,
+          "type": "vsts",
+          "name": "pr",
+          "vstsBuild": "pr",
           "vstsProject": "Online-bills"
         }
       ]

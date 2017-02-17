@@ -1,5 +1,6 @@
 var express = require('express');
 var github = require('../../services/github-service');
+var vsts = require('../../services/vsts-service');
 var projects = require('../../config/projects.json').projects;
 var router = express.Router();
 
@@ -27,12 +28,19 @@ router.get('/:projectId', function (req, res, next) {
       });
       break;
     case 'vsts':
-      let result = {
-        projectId: projectId,
-        numberOfPullRequests: 0
-      };
+      vsts.getPullRequests(sourceControl.vstsProject, sourceControl.vstsRepo, (err, data) => {
+        if (err) {
+          return res.status(500).send(JSON.stringify(err));
+        }
 
-      res.send(JSON.stringify(result));
+        let result = {
+          projectId: projectId,
+          numberOfPullRequests: data.length
+        };
+
+        res.send(JSON.stringify(result));
+      });
+
       break;
     default:
       return next({
