@@ -121,8 +121,7 @@
           "vstsProject": "Civic Payments"          
         }
       ]
-    }
-    ,
+    },
     {
       "id": 6,
       "name": "OB",
@@ -140,6 +139,27 @@
           "name": "-- PLEASE UPDATE THE NAME --",
           "vstsBuild": "master",
           "vstsProject": "Online-bills"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "API",
+      "description": "Construct is the cloud based api for AA",
+      "gitHubOwner": "Accela-Inc",
+      "gitHubRepo": "OB",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "Construct"
+      },
+      "builds": [
+        {
+          "id": 71,
+          "type": "vsts",
+          "name": "-- PLEASE UPDATE THE NAME --",
+          "vstsBuild": "master",
+          "vstsProject": "--construct--"
         }
       ]
     }
