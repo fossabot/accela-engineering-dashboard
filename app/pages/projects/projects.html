@@ -1,12 +1,22 @@
 <h2>Projects</h2>
 
 <div class="row">
-    <div class="col-md-6">
-      <div class="well" *ngFor="let project of projects">
-        <h3>{{project.name}}</h3>
+  <div class="col-md-6">
+    <div class="panel panel-default" *ngFor="let project of projects">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{project.name}} 
+          <span class="label pull-right" [ngClass]="{'label-success': project.github?.numberOfPullRequests < 5, 'label-danger': project.github?.numberOfPullRequests > 25 }">Open Pull Requests: {{ project.github?.numberOfPullRequests }}</span>
+        </h3>
+      </div>
+      <div class="panel-body">
         <p>{{project.description}}</p>
-        <span class="badge">Current Build: {{project.jenkinsLatestBuildStatus}}</span>
-        <span class="badge">Open Pull Requests: {{project.gitHubPullRequestsCount}}</span>
+        
+        <div class="well" *ngFor="let build of project.builds">
+          {{ build.name }}: <span class="label" [ngClass]="{'label-success': build.status === 'passing', 'label-danger': build.status !== 'passing' }">{{ build.status }}</span>
+        </div>
       </div>
     </div>
+  </div>
 </div>
+
+{{ projects | json }}

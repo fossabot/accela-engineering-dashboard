@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { ProjectsProvider } from '../../providers/projects';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'page-projects',
@@ -7,12 +10,49 @@ import { Component } from '@angular/core';
 export class ProjectsPage {
   projects: any[];
 
+  constructor(
+    private projectsProvider: ProjectsProvider
+  ) {
+  }
+
   ngOnInit() {
-    this.projects = [
-      { id: 1, name: "PMA", description: "Productivity Mobile App", jenkinsLatestBuildStatus: "good", gitHubPullRequestsCount: 3 },
-      { id: 2, name: "ACA", description: "Accela Citizen Access", jenkinsLatestBuildStatus: "failed", gitHubPullRequestsCount: 4 },
-      { id: 3, name: "AA", description: "Accela Automation", jenkinsLatestBuildStatus: "good", gitHubPullRequestsCount: 5 },
-      { id: 4, name: "AGIS", description: "Accela GIS", jenkinsLatestBuildStatus: "good", gitHubPullRequestsCount: 6 },
-    ];
+    this.projectsProvider.getProjects()
+      .subscribe(res => {
+        this.projects = res;
+
+        let buildStatusRequests = _.flatMap(res, project => project.builds)
+          .map(build => {
+            return this.projectsProvider.getBuildStatus(build.id);
+          });
+
+        let buildStatuses = Observable.merge(...buildStatusRequests)
+          .subscribe(
+            buildStatus => {
+              this.updateBuildStatus(buildStatus);
+            }
+          );
+
+        let gitHubRequests = res.map(project => {
+          return this.projectsProvider.getGitHubInfo(project.id);
+        })
+
+        let gitHubData = Observable.merge(...gitHubRequests)
+          .subscribe(
+            gitHubInfo => {
+              this.updateGitHubInfo(gitHubInfo);
+            }
+          );
+      });
+  }
+
+  private updateBuildStatus(buildStatus) {
+    let project = _.filter(this.projects, { builds: [ { id: buildStatus.id } ]})[0];
+    let build = project.builds.find(x => x.id === buildStatus.id);
+    Object.assign(build, buildStatus);
+  }
+
+  private updateGitHubInfo(gitHubInfo) {
+    let project = this.projects.find(x => x.id === gitHubInfo.projectId);
+    project.github = gitHubInfo;
   }
 }

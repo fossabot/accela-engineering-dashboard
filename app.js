@@ -6,7 +6,8 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/projects');
+var apiBuildStatus = require('./routes/api/build-status');
+var apiGitHub = require('./routes/api/github');
 
 var app = express();
 
@@ -24,11 +25,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
+app.use('/app', express.static(path.join(__dirname, 'app')));
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use("/systemjs.config.js", express.static(__dirname + '/systemjs.config.js'));
+app.use('/api/projects', express.static(path.join(__dirname, 'config/projects.json')));
 
 app.use('/', routes);
-app.use('/projects', users);
+app.use('/api/builds/', apiBuildStatus);
+app.use('/api/github/', apiGitHub);
+
+app.use('*', routes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
