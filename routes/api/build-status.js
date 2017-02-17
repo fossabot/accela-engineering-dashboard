@@ -46,9 +46,7 @@ router.get('/:buildId', function (req, res, next) {
       
       vsts.getBuildStatus(build.vstsProject, build.vstsBuild, (err, data) => {
         if (err) {
-          console.log(err);
-          res.send(JSON.stringify({}));
-          return;
+          return res.status(500).send(JSON.stringify(err));
         }
         
         let status = {
