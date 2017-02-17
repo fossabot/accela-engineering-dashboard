@@ -4,8 +4,11 @@
       "id": 1,
       "name": "PMA",
       "description": "PMA is a hybrid mobile application.",
-      "gitHubOwner": "Accela-Inc",
-      "gitHubRepo": "hybrid-pma",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "hybrid-pma"
+      },      
       "builds": [
         {
           "id": 1,
@@ -27,8 +30,11 @@
       "id": 2,
       "name": "ACA",
       "description": "ACA is Accela's citizen facing portal",
-      "gitHubOwner": "Accela-Inc",
-      "gitHubRepo": "ACA_Prod",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "ACA_Prod"
+      },  
       "builds": [
         {
           "id": 21,
@@ -50,8 +56,11 @@
       "id": 3,
       "name": "AA",
       "description": "AA is Accela's civic platform",
-      "gitHubOwner": "Accela-Inc",
-      "gitHubRepo": "AA_Prod",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "AA_Prod"
+      },
       "builds": [
         {
           "id": 31,
@@ -73,8 +82,11 @@
       "id": 4,
       "name": "AGIS",
       "description": "AGIS is Accela's GIS System",
-      "gitHubOwner": "Accela-Inc",
-      "gitHubRepo": "AGIS",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "AGIS"
+      },
       "builds": [
         {
           "id": 41,
@@ -96,16 +108,17 @@
       "id": 5,
       "name": "CP",
       "description": "CP is Accela's civic payments v1",
-      "gitHubOwner": "Accela-Inc",
-      "gitHubRepo": "CP",
+      "sourceControl": {
+        "type": "vsts",
+        "vstsRepo": "Connect_Payments"
+      },
       "builds": [
         {
           "id": 51,
           "type": "vsts",
           "name": "-- PLEASE UPDATE THE NAME --",
           "vstsBuild": "ServiceAdmin_master",
-          "vstsProject": "Civic Payments",
-          "vstsRepo": "Connect_Payments"
+          "vstsProject": "Civic Payments"          
         }
       ]
     }
@@ -116,14 +129,17 @@
       "description": "OB is Online-bills.com Utility Payments",
       "gitHubOwner": "Accela-Inc",
       "gitHubRepo": "OB",
+      "sourceControl": {
+        "type": "vsts",
+        "vstsRepo": "Online-bills"
+      },
       "builds": [
         {
-          "id": 51,
+          "id": 61,
           "type": "vsts",
           "name": "-- PLEASE UPDATE THE NAME --",
           "vstsBuild": "master",
-          "vstsProject": "Online-bills",
-          "vstsRepo": "Online-bills"
+          "vstsProject": "Online-bills"
         }
       ]
     }

@@ -13,14 +13,16 @@ router.get('/:buildId', function (req, res, next) {
     case 'jenkins':
       jenkins.getJenkinsLatestBuildInfo(build.jenkinsEndpoint, build.jenkinsJobName, function (err, data) {
         if (err) {
-          return next(err)
+          console.log(err);
+          res.send(JSON.stringify({}));
+          return;
         }
 
         let status = {
           status: data.result === 'SUCCESS' ? 'passing' : 'failing',
           runDate: new Date(data.timestamp),
           duration: data.duration,
-          id: parseInt(req.params.buildId, 10)
+          id: buildId
         };
 
         if (data.changeSet && data.changeSet.items) {
@@ -41,8 +43,20 @@ router.get('/:buildId', function (req, res, next) {
       });
       break;
 
+    case "vsts":
+      let status = {
+        status: 'passing',
+        runDate: new Date(),
+        duration: 10,
+        id: buildId
+      };
+
+      res.send(JSON.stringify(status));
+      break;
     default:
-      return next(err)
+      return next({
+        message: "Unknown build type"
+      });
 
   }
 });

@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 
 var routes = require('./routes/index');
 var apiBuildStatus = require('./routes/api/build-status');
-var apiGitHub = require('./routes/api/github');
+var apiSourceControl = require('./routes/api/source-control');
 
 var app = express();
 
@@ -32,7 +32,7 @@ app.use('/api/projects', express.static(path.join(__dirname, 'config/projects.js
 
 app.use('/', routes);
 app.use('/api/builds/', apiBuildStatus);
-app.use('/api/github/', apiGitHub);
+app.use('/api/source-control/', apiSourceControl);
 
 app.use('*', routes);
 

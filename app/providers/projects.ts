@@ -21,7 +21,7 @@ export class ProjectsProvider {
     }
 
     getGitHubInfo(projectId) {
-        return this.http.get(`/api/github/${projectId}`)
+        return this.http.get(`/api/source-control/${projectId}`)
             .map((res: Response) => res.json());
     }
 }
