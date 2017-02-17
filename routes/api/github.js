@@ -8,13 +8,16 @@ router.get('/:projectId', function (req, res, next) {
 
   let project = projects.find(x => x.id === projectId);
 
-  github.getProjectGitHubPullRequestInfo(project.gitHubRepo, project.gitHubOwner, function(err, data) {
+  github.getProjectGitHubPullRequestInfo(project.gitHubRepo, project.gitHubOwner, function (err, data) {
     let result = {
-    projectId: projectId,
-    numberOfPullRequests: data.length
-  };
+      projectId: projectId,
+      numberOfPullRequests: data.length
+    };
 
-  res.send(JSON.stringify(result));
+    // if you want to attach all of the github data to the response object
+    // result.githubstuff = data;
+
+    res.send(JSON.stringify(result));
   });
 });
 

@@ -1,0 +1,302 @@
+{
+  "_class": "hudson.model.FreeStyleBuild",
+  "actions": [
+    {
+      "_class": "hudson.model.CauseAction",
+      "causes": [
+        {
+          "_class": "hudson.triggers.SCMTrigger$SCMTriggerCause",
+          "shortDescription": "Started by an SCM change"
+        }
+      ]
+    },
+    {},
+    {},
+    {},
+    {},
+    {
+      "_class": "hudson.plugins.git.util.BuildData",
+      "buildsByBranchName": {
+        "refs\/remotes\/origin\/dev": {
+          "_class": "hudson.plugins.git.util.Build",
+          "buildNumber": 375,
+          "buildResult": null,
+          "marked": {
+            "SHA1": "ac7ff4ec2e3055405b58b024a62d7fb6e370c821",
+            "branch": [
+              {
+                "SHA1": "ac7ff4ec2e3055405b58b024a62d7fb6e370c821",
+                "name": "refs\/remotes\/origin\/dev"
+              }
+            ]
+          },
+          "revision": {
+            "SHA1": "ac7ff4ec2e3055405b58b024a62d7fb6e370c821",
+            "branch": [
+              {
+                "SHA1": "ac7ff4ec2e3055405b58b024a62d7fb6e370c821",
+                "name": "refs\/remotes\/origin\/dev"
+              }
+            ]
+          }
+        },
+        "refs\/remotes\/origin\/master": {
+          "_class": "hudson.plugins.git.util.Build",
+          "buildNumber": 18,
+          "buildResult": null,
+          "marked": {
+            "SHA1": "1b25c66b52a34b3875554807f1f1d17dfb952b49",
+            "branch": [
+              {
+                "SHA1": "1b25c66b52a34b3875554807f1f1d17dfb952b49",
+                "name": "refs\/remotes\/origin\/master"
+              }
+            ]
+          },
+          "revision": {
+            "SHA1": "1b25c66b52a34b3875554807f1f1d17dfb952b49",
+            "branch": [
+              {
+                "SHA1": "1b25c66b52a34b3875554807f1f1d17dfb952b49",
+                "name": "refs\/remotes\/origin\/master"
+              }
+            ]
+          }
+        }
+      },
+      "lastBuiltRevision": {
+        "SHA1": "ac7ff4ec2e3055405b58b024a62d7fb6e370c821",
+        "branch": [
+          {
+            "SHA1": "ac7ff4ec2e3055405b58b024a62d7fb6e370c821",
+            "name": "refs\/remotes\/origin\/dev"
+          }
+        ]
+      },
+      "remoteUrls": [
+        "git@github.com:Accela-Inc\/hybrid-pma.git"
+      ],
+      "scmName": ""
+    },
+    {
+      "_class": "hudson.plugins.git.GitTagAction"
+    },
+    {},
+    {},
+    {
+      "_class": "hudson.tasks.junit.TestResultAction",
+      "failCount": 0,
+      "skipCount": 0,
+      "totalCount": 227,
+      "urlName": "testReport"
+    },
+    {},
+    {
+      "_class": "org.jenkinsci.plugins.buildenvironment.actions.BuildEnvironmentBuildAction"
+    },
+    {}
+  ],
+  "artifacts": [
+    {
+      "displayPath": "android-release-unsigned.apk",
+      "fileName": "android-release-unsigned.apk",
+      "relativePath": "platforms\/android\/build\/outputs\/apk\/android-release-unsigned.apk"
+    },
+    {
+      "displayPath": "pma.ipa",
+      "fileName": "pma.ipa",
+      "relativePath": "platforms\/ios\/build\/device\/pma.ipa"
+    }
+  ],
+  "building": false,
+  "description": null,
+  "displayName": "#375",
+  "duration": 755784,
+  "estimatedDuration": 695548,
+  "executor": null,
+  "fullDisplayName": "hybrid-pma #375",
+  "id": "375",
+  "keepLog": false,
+  "number": 375,
+  "queueId": 303,
+  "result": "SUCCESS",
+  "timestamp": 1487292998114,
+  "url": "http:\/\/boardroom-mm:8080\/job\/hybrid-pma\/375\/",
+  "builtOn": "",
+  "changeSet": {
+    "_class": "hudson.plugins.git.GitChangeSetList",
+    "items": [
+      {
+        "_class": "hudson.plugins.git.GitChangeSet",
+        "affectedPaths": [
+          "package.json",
+          "config.xml"
+        ],
+        "commitId": "c5929462faf20085bc664378cf16134f141f7bfe",
+        "timestamp": 1487286462000,
+        "author": {
+          "absoluteUrl": "http:\/\/boardroom-mm:8080\/user\/jenkins",
+          "fullName": "jenkins"
+        },
+        "comment": "Release 374\n",
+        "date": "2017-02-16 15:07:42 -0800",
+        "id": "c5929462faf20085bc664378cf16134f141f7bfe",
+        "msg": "Release 374",
+        "paths": [
+          {
+            "editType": "edit",
+            "file": "package.json"
+          },
+          {
+            "editType": "edit",
+            "file": "config.xml"
+          }
+        ]
+      },
+      {
+        "_class": "hudson.plugins.git.GitChangeSet",
+        "affectedPaths": [
+          "src\/pages\/inspection-details\/inspection-details-tablet\/inspection-details-tablet.component.spec.ts",
+          "src\/pages\/inspection-details\/inspection-details-tablet\/inspection-details-tablet.component.ts"
+        ],
+        "commitId": "5d762623061e374bba3e644b8874e6a0a53df97b",
+        "timestamp": 1487292898000,
+        "author": {
+          "absoluteUrl": "http:\/\/boardroom-mm:8080\/user\/noreply",
+          "fullName": "noreply"
+        },
+        "comment": "APPACCMOBI-2172: Opening condition detail page when clicked on banner in\ntablet (#530)\n* Opening condition detail page when clicked on banner in tablet\n\n* Adding unit test\n",
+        "date": "2017-02-16 16:54:58 -0800",
+        "id": "5d762623061e374bba3e644b8874e6a0a53df97b",
+        "msg": "APPACCMOBI-2172: Opening condition detail page when clicked on banner in",
+        "paths": [
+          {
+            "editType": "edit",
+            "file": "src\/pages\/inspection-details\/inspection-details-tablet\/inspection-details-tablet.component.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/pages\/inspection-details\/inspection-details-tablet\/inspection-details-tablet.component.spec.ts"
+          }
+        ]
+      },
+      {
+        "_class": "hudson.plugins.git.GitChangeSet",
+        "affectedPaths": [
+          "src\/pages\/inspection-contacts\/inspection-contacts.ts",
+          "src\/pages\/inspection-contact-detail\/inspection-contact-detail.html",
+          "src\/providers\/jobs\/jobs.service.ts",
+          "src\/pages\/new-contact\/new-contact.html",
+          "src\/pages\/inspection-contact-detail\/inspection-contact-detail.ts",
+          "src\/components\/contacts\/contact-detail.component.ts",
+          "src\/assets\/i18n\/en.json",
+          "src\/pages\/inspection-contacts\/inspection-contacts.html",
+          "src\/app\/app.module.ts",
+          "src\/pages\/pages.ts",
+          "src\/providers\/contact\/contact-service.spec.ts",
+          "src\/components\/contacts\/contact-card.component.ts",
+          "src\/pages\/new-contact\/new-contact.ts",
+          "src\/components\/contacts\/contact-detail.component.html",
+          "src\/pages\/inspection-details\/inspection-details-tablet\/inspection-details-tablet.component.ts",
+          "src\/pages\/inspection-details\/inspection-details-tablet\/inspection-details-tablet.component.html",
+          "src\/providers\/contact\/contact-service.ts"
+        ],
+        "commitId": "ac7ff4ec2e3055405b58b024a62d7fb6e370c821",
+        "timestamp": 1487292996000,
+        "author": {
+          "absoluteUrl": "http:\/\/boardroom-mm:8080\/user\/info",
+          "fullName": "info"
+        },
+        "comment": "APPACCMOBI-2096 Create new contact (#528)\n* add new contact feature\n\n* add close button for tablet\n\n* merge methods for page dismissal\n\n* use PmaActionSheetController instead of Ionic's\n\n* add translated messages to contact action sheet\n",
+        "date": "2017-02-16 16:56:36 -0800",
+        "id": "ac7ff4ec2e3055405b58b024a62d7fb6e370c821",
+        "msg": "APPACCMOBI-2096 Create new contact (#528)",
+        "paths": [
+          {
+            "editType": "add",
+            "file": "src\/pages\/new-contact\/new-contact.html"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/pages\/inspection-contacts\/inspection-contacts.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/components\/contacts\/contact-detail.component.html"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/pages\/inspection-contact-detail\/inspection-contact-detail.html"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/pages\/pages.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/pages\/inspection-contacts\/inspection-contacts.html"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/pages\/inspection-contact-detail\/inspection-contact-detail.ts"
+          },
+          {
+            "editType": "add",
+            "file": "src\/providers\/contact\/contact-service.spec.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/providers\/jobs\/jobs.service.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/assets\/i18n\/en.json"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/components\/contacts\/contact-detail.component.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/components\/contacts\/contact-card.component.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/pages\/inspection-details\/inspection-details-tablet\/inspection-details-tablet.component.html"
+          },
+          {
+            "editType": "add",
+            "file": "src\/pages\/new-contact\/new-contact.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/app\/app.module.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/providers\/contact\/contact-service.ts"
+          },
+          {
+            "editType": "edit",
+            "file": "src\/pages\/inspection-details\/inspection-details-tablet\/inspection-details-tablet.component.ts"
+          }
+        ]
+      }
+    ],
+    "kind": "git"
+  },
+  "culprits": [
+    {
+      "absoluteUrl": "http:\/\/boardroom-mm:8080\/user\/jenkins",
+      "fullName": "jenkins"
+    },
+    {
+      "absoluteUrl": "http:\/\/boardroom-mm:8080\/user\/info",
+      "fullName": "info"
+    },
+    {
+      "absoluteUrl": "http:\/\/boardroom-mm:8080\/user\/noreply",
+      "fullName": "noreply"
+    }
+  ]
+}

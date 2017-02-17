@@ -15,20 +15,20 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [ 
-    BrowserModule, 
+  imports: [
+    BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule
   ],
-  declarations: [ 
-    AppComponent, 
-    MainMenuComponent, 
-    ProjectsPage, 
+  declarations: [
+    AppComponent,
+    MainMenuComponent,
+    ProjectsPage,
     HomePage
   ],
   providers: [
     ProjectsProvider
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

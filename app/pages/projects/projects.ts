@@ -26,10 +26,11 @@ export class ProjectsPage {
           });
 
         let buildStatuses = Observable.merge(...buildStatusRequests)
+          .onErrorResumeNext()
           .subscribe(
-            buildStatus => {
-              this.updateBuildStatus(buildStatus);
-            }
+          buildStatus => {
+            this.updateBuildStatus(buildStatus);
+          }
           );
 
         let gitHubRequests = res.map(project => {
@@ -37,16 +38,17 @@ export class ProjectsPage {
         })
 
         let gitHubData = Observable.merge(...gitHubRequests)
+          .onErrorResumeNext()
           .subscribe(
-            gitHubInfo => {
-              this.updateGitHubInfo(gitHubInfo);
-            }
+          gitHubInfo => {
+            this.updateGitHubInfo(gitHubInfo);
+          }
           );
       });
   }
 
   private updateBuildStatus(buildStatus) {
-    let project = _.filter(this.projects, { builds: [ { id: buildStatus.id } ]})[0];
+    let project = _.filter(this.projects, { builds: [{ id: buildStatus.id }] })[0];
     let build = project.builds.find(x => x.id === buildStatus.id);
     Object.assign(build, buildStatus);
   }

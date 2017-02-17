@@ -9,12 +9,14 @@
       "builds": [
         {
           "id": 1,
+          "type": "jenkins",
           "name": "Continuous Integration",
           "jenkinsEndpoint": "http://boardroom-mm:8080",
           "jenkinsJobName": "hybrid-pma"
         },
         {
           "id": 2,
+          "type": "jenkins",
           "name": "Feature Branch Validation",
           "jenkinsEndpoint": "http://boardroom-mm:8080",
           "jenkinsJobName": "pma-hybrid-feature-branches"
@@ -30,15 +32,17 @@
       "builds": [
         {
           "id": 21,
+          "type": "jenkins",
           "name": "Daily Build",
           "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
-          "jenkinsJobName": "ACA_9.1.0_daily_build_deploy"
+          "jenkinsJobName": "ACA_9.1.0_Daily_build_deploy"
         },
         {
           "id": 22,
+          "type": "jenkins",
           "name": "Dev Integration",
           "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
-          "jenkinsJobName": "ACA_9.1.0_devint"
+          "jenkinsJobName": "ACA_91.0_DEVINT"
         }
       ]
     },
@@ -51,12 +55,14 @@
       "builds": [
         {
           "id": 31,
+          "type": "jenkins",
           "name": "Daily Build",
           "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
           "jenkinsJobName": "AA_9.1.0_daily_build_deploy"
         },
         {
           "id": 32,
+          "type": "jenkins",
           "name": "Dev Integration",
           "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
           "jenkinsJobName": "AA_9.1.0_devint"
@@ -72,12 +78,14 @@
       "builds": [
         {
           "id": 41,
+          "type": "jenkins",
           "name": "Daily Build",
           "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
           "jenkinsJobName": "AGIS_9.1.0_daily_build_deploy"
         },
         {
           "id": 42,
+          "type": "jenkins",
           "name": "Dev Integration",
           "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
           "jenkinsJobName": "AGIS_9.1.0_devint"

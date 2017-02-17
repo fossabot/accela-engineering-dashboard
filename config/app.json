@@ -1,4 +1,5 @@
 {
   "gitHubTokenPre": "6e53ed5678905757",
-  "gitHubTokenPost": "f7e349ff4063d73d242f1f9d"
+  "gitHubTokenPost": "f7e349ff4063d73d242f1f9d",
+  "useMocks": true
 }

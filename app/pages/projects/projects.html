@@ -2,21 +2,54 @@
 
 <div class="row">
   <div class="col-md-6">
+
+
+
+
     <div class="panel panel-default" *ngFor="let project of projects">
       <div class="panel-heading">
-        <h3 class="panel-title">{{project.name}} 
+        <h3 class="panel-title">{{project.name}}
           <span class="label pull-right" [ngClass]="{'label-success': project.github?.numberOfPullRequests < 5, 'label-danger': project.github?.numberOfPullRequests > 5 }">Open Pull Requests: {{ project.github?.numberOfPullRequests }}</span>
         </h3>
       </div>
       <div class="panel-body">
         <p>{{project.description}}</p>
-        
-        <div class="well" *ngFor="let build of project.builds">
-          {{ build.name }}: <span class="label" [ngClass]="{'label-success': build.status === 'passing', 'label-danger': build.status !== 'passing' }">{{ build.status }}</span>
+
+        <div class="panel-group" *ngFor="let build of project.builds">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" [href]="'#collapse-' + build.id">{{ build.name }}</a>
+                <span class="label pull-right"
+                  [ngClass]="{'label-success': build.status === 'passing', 'label-danger': build.status !== 'passing' }">{{ build.status }}</span>
+              </h4>
+            </div>
+            <div [id]="'collapse-' + build.id" class="panel-collapse collapse">
+              <div class="panel-body">
+                <ul *ngIf="build.changes">
+                  <li *ngFor="let change of build.changes"> {{ change.comment }}: <span class="label label-primary">{{ change.commitId }}</span></li>
+                </ul>
+              </div>
+              <div class="panel-footer">{{ build.runDate | date:'medium' }}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-{{ projects | json }}
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#jsonData">Raw View Model</a>
+      </h4>
+    </div>
+    <div id="jsonData" class="panel-collapse collapse">
+      <div class="panel-body">
+        <pre>{{ projects | json }}</pre>
+      </div>
+    </div>
+  </div>
+</div>
