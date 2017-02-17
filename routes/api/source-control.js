@@ -12,9 +12,7 @@ router.get('/:projectId', function (req, res, next) {
     case 'github':
       github.getProjectGitHubPullRequestInfo(sourceControl.gitHubRepo, sourceControl.gitHubOwner, function (err, data) {
         if (err) {
-          res.send(JSON.stringify({}));
-          console.log(err);
-          return;
+          return res.status(500).send(JSON.stringify(err));
         }
 
         let result = {

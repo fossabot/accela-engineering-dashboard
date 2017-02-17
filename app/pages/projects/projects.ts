@@ -22,11 +22,10 @@ export class ProjectsPage {
 
         let buildStatusRequests = _.flatMap(res, project => project.builds)
           .map(build => {
-            return this.projectsProvider.getBuildStatus(build.id);
+            return this.projectsProvider.getBuildStatus(build.id).onErrorResumeNext();
           });
 
         let buildStatuses = Observable.merge(...buildStatusRequests)
-          .onErrorResumeNext()
           .subscribe(
           buildStatus => {
             this.updateBuildStatus(buildStatus);
@@ -34,11 +33,10 @@ export class ProjectsPage {
           );
 
         let gitHubRequests = res.map(project => {
-          return this.projectsProvider.getGitHubInfo(project.id);
+          return this.projectsProvider.getGitHubInfo(project.id).onErrorResumeNext();
         })
 
         let gitHubData = Observable.merge(...gitHubRequests)
-          .onErrorResumeNext()
           .subscribe(
           gitHubInfo => {
             this.updateGitHubInfo(gitHubInfo);
