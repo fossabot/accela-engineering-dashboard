@@ -7,7 +7,7 @@ function getBuildStatus(vstsProject, vstsBuild, callback) {
   }, 250);
 }
 
-function getPullRequests(gitHubRepo, gitHubOwner, callback) {
+function getPullRequests(vstsProject, vstsRepo, callback) {
   setTimeout(function () {
     callback(null, mockPullRequests);
   }, 250);
