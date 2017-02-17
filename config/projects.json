@@ -30,6 +30,26 @@
       "gitHubRepo": "AA_Prod",
       "openPullRequest": 12,
       "currentBuildStatus": "Passing"
+    },
+    {
+      "id": 4,
+      "name": "CP",
+      "description": "CP is Accela's civic payments v1",
+      "vstsBuild": "ServiceAdmin_master",
+      "vstsProject": "Civic Payments",
+      "vstsRepo": "Connect_Payments",
+      "openPullRequest": 0,
+      "currentBuildStatus": "Passing"
+    },
+    {
+      "id": 5,
+      "name": "OB",
+      "description": "OB is Online-bills.com Utility Payments",
+      "vstsBuild": "master",
+      "vstsProject": "Online-bills",
+      "vstsRepo": "Online-bills",
+      "openPullRequest": 0,
+      "currentBuildStatus": "Passing"
     }
   ]
 }
