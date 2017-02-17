@@ -4,12 +4,12 @@ const handler = vsts.getPersonalAccessTokenHandler(process.env.VSTS_KEY);
 const api = new vsts.WebApi(process.env.VSTS_URI, handler);
 
 function getBuildStatus(vstsProject, vstsBuild, callback) {
-    const build = api.getBuildApi();
+    const buildApi = api.getBuildApi();
 
-    build.getDefinitions(vstsProject, vstsBuild)
+    buildApi.getDefinitions(vstsProject, vstsBuild)
     .then(definitions => {
         if (definitions.length) {
-            return build.getBuilds(vstsProject, [definitions[0].id]);
+            return buildApi.getBuilds(vstsProject, [definitions[0].id]);
         }
     })
     .then(builds => {
@@ -19,22 +19,34 @@ function getBuildStatus(vstsProject, vstsBuild, callback) {
         builds = builds.filter(build => validStatuses.indexOf(build.result) > -1);
         if (builds.length) {
             
-            switch (builds[0].status) {
+            let build = builds[0];
+            switch (build.status) {
                 case 2:
-                    status = 'SUCCESS';
+                    status = 'passing';
                     break;
                 case 4:
-                    status = 'PARTIAL';
+                    status = 'partial';
                     break;
                 case 8:
-                    status = 'FAILED';
+                    status = 'failed';
                     break;
             }
+
+            buildApi.getBuildChanges(vstsProject, build.id)
+            .then(changes => {
+                callback(null, {
+                    runDate: build.startTime,
+                    status: status,
+                    duration: (build.finishTime - build.startTime),
+                    changes: changes.map(change => {
+                        return {
+                            comment: change.message,
+                            commitId: change.id
+                        };
+                    })
+                });
+            });
         }
-        
-        callback(null, {
-            result: status
-        });
     })
     .catch(reason => {
         callback(reason);

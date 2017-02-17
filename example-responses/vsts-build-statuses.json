@@ -1,0 +1,11 @@
+{
+    "status": "passing",
+    "runDate": "2017-02-17T19:5947.000Z",
+    "duration": 100,
+    "changes": [
+        {
+            "comment": "",
+            "commitId": "abc"
+        }
+    ]
+}

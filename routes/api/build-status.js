@@ -1,6 +1,7 @@
 var express = require('express');
 var _ = require('lodash');
 var jenkins = require('../../services/jenkins-service');
+var vsts = require('../../services/vsts-service');
 var projects = require('../../config/projects.json').projects;
 var router = express.Router();
 
@@ -42,14 +43,24 @@ router.get('/:buildId', function (req, res, next) {
       break;
 
     case "vsts":
-      let status = {
-        status: 'passing',
-        runDate: new Date(),
-        duration: 10,
-        id: buildId
-      };
+      
+      vsts.getBuildStatus(build.vstsProject, build.vstsBuild, (err, data) => {
+        if (err) {
+          console.log(err);
+          res.send(JSON.stringify({}));
+          return;
+        }
+        
+        let status = {
+          status: data.status,
+          runDate: data.runDate,
+          duration: data.duration,
+          id: buildId,
+          changes: data.changes
+        };
 
-      res.send(JSON.stringify(status));
+        res.send(JSON.stringify(status));
+      });
       break;
     default:
       return next({
