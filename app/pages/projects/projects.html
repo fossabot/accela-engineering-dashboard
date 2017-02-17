@@ -1,12 +1,8 @@
 <h2>Projects</h2>
 
 <div class="row">
-  <div class="col-md-6">
-
-
-
-
-    <div class="panel panel-default" *ngFor="let project of projects">
+  <div class="col-md-6"  *ngFor="let project of projects">
+    <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">{{project.name}}
           <span class="label pull-right" [ngClass]="{'label-success': project.github?.numberOfPullRequests < 5, 'label-danger': project.github?.numberOfPullRequests > 5 }">Open Pull Requests: {{ project.github?.numberOfPullRequests }}</span>
