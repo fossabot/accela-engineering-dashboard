@@ -1,6 +1,110 @@
 {
   "projects": [
     {
+      "id": 1,
+      "name": "PMA",
+      "description": "PMA is a hybrid mobile application.",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "hybrid-pma"
+      },      
+      "builds": [
+        {
+          "id": 1,
+          "type": "jenkins",
+          "name": "Continuous Integration",
+          "jenkinsEndpoint": "http://boardroom-mm:8080",
+          "jenkinsJobName": "hybrid-pma"
+        },
+        {
+          "id": 2,
+          "type": "jenkins",
+          "name": "Feature Branch Validation",
+          "jenkinsEndpoint": "http://boardroom-mm:8080",
+          "jenkinsJobName": "pma-hybrid-feature-branches"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "ACA",
+      "description": "ACA is Accela's citizen facing portal",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "ACA_Prod"
+      },  
+      "builds": [
+        {
+          "id": 21,
+          "type": "jenkins",
+          "name": "Daily Build",
+          "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
+          "jenkinsJobName": "ACA_9.1.0_Daily_build_deploy"
+        },
+        {
+          "id": 22,
+          "type": "jenkins",
+          "name": "Dev Integration",
+          "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
+          "jenkinsJobName": "ACA_91.0_DEVINT"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "AA",
+      "description": "AA is Accela's civic platform",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "AA_Prod"
+      },
+      "builds": [
+        {
+          "id": 31,
+          "type": "jenkins",
+          "name": "Daily Build",
+          "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
+          "jenkinsJobName": "AA_9.1.0_daily_build_deploy"
+        },
+        {
+          "id": 32,
+          "type": "jenkins",
+          "name": "Dev Integration",
+          "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
+          "jenkinsJobName": "AA_9.1.0_devint"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "AGIS",
+      "description": "AGIS is Accela's GIS System",
+      "sourceControl": {
+        "type": "github",
+        "gitHubOwner": "Accela-Inc",
+        "gitHubRepo": "AGIS"
+      },
+      "builds": [
+        {
+          "id": 41,
+          "type": "jenkins",
+          "name": "Daily Build",
+          "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
+          "jenkinsJobName": "AGIS_9.1.0_daily_build_deploy"
+        },
+        {
+          "id": 42,
+          "type": "jenkins",
+          "name": "Dev Integration",
+          "jenkinsEndpoint": "http://acdp.cloudapp.net:62458",
+          "jenkinsJobName": "AGIS_9.1.0_devint"
+        }
+      ]
+    },
+    {
       "id": 5,
       "name": "CP",
       "description": "CP is Accela's civic payments v1",
@@ -66,6 +170,13 @@
         "gitHubRepo": "Construct"
       },
       "builds": [
+        {
+          "id": 71,
+          "type": "vsts",
+          "name": "-- PLEASE UPDATE THE NAME --",
+          "vstsBuild": "master",
+          "vstsProject": "--construct--"
+        }
       ]
     }
   ]
