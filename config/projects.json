@@ -91,6 +91,41 @@
           "jenkinsJobName": "AGIS_9.1.0_devint"
         }
       ]
+    },
+    {
+      "id": 5,
+      "name": "CP",
+      "description": "CP is Accela's civic payments v1",
+      "gitHubOwner": "Accela-Inc",
+      "gitHubRepo": "CP",
+      "builds": [
+        {
+          "id": 51,
+          "type": "vsts",
+          "name": "-- PLEASE UPDATE THE NAME --",
+          "vstsBuild": "ServiceAdmin_master",
+          "vstsProject": "Civic Payments",
+          "vstsRepo": "Connect_Payments"
+        }
+      ]
+    }
+    ,
+    {
+      "id": 6,
+      "name": "OB",
+      "description": "OB is Online-bills.com Utility Payments",
+      "gitHubOwner": "Accela-Inc",
+      "gitHubRepo": "OB",
+      "builds": [
+        {
+          "id": 51,
+          "type": "vsts",
+          "name": "-- PLEASE UPDATE THE NAME --",
+          "vstsBuild": "master",
+          "vstsProject": "Online-bills",
+          "vstsRepo": "Online-bills"
+        }
+      ]
     }
   ]
 }
