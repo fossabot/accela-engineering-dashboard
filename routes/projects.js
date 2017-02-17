@@ -4,7 +4,7 @@ var viewModelService = require('../services/project-list-view-model-service');
 var router = express.Router();
 
 router.get('/', function (req, res) {
-  let viewModel = viewModelService.generate(projects.projects, function (err, viewModel) {
+  viewModelService.generate(projects.projects, function (err, viewModel) {
     if (err) {
       throw err;
     }
